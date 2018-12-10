@@ -62,8 +62,8 @@ class Nav extends Component {
                             <span className="tooltip">Subir archivo</span>
                         </li>
                         <li>
-                            <i className="fa fa-newspaper-o"></i>
-                            <span className="tooltip">Contactos</span>
+                            <i className="fa fa-search"></i>
+                            <span className="tooltip">Buscar</span>
                         </li>
                         <li>
                             <i className="fa fa-print"></i>

@@ -3,11 +3,9 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { getDocumentos } from '../actions/index'
 import DocsPage from '../docs/DocsPage'
-import Buscar from '../buscar/v1'
+// import Buscar from '../buscar/v1'
 import Nav from './Nav'
-import {
-  Row
-} from 'mdbreact'
+import { Row } from 'mdbreact'
 class Home extends Component {
   componentWillMount() {
     this.props.getDocumentos();
@@ -31,28 +29,25 @@ class Home extends Component {
     return (
       <div className="">
         <div>
-          <Nav/>
+          <Nav />
         </div>
-        <div style={{marginLeft:'15rem'}}>
-        <section className="text-center">
-          <Buscar /> 
-          <Row>
-            {documen}
-          </Row>
-        </section>
+        <div style={{ marginLeft: '15rem' }}>
+          <section className="text-center">
+            {/* <Buscar /> */}
+            <Row>
+              {documen}
+            </Row>
+          </section>
         </div>
       </div>
     );
   }
 }
-//Esta funcion convierte el valor de la store que yo quiero
-// en propiedades para el componente
 function mapStateToProps(state) {
   return {
     documentos: state.getDocumentos
   }
 }
-
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     getDocumentos

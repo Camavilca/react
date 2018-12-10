@@ -1,29 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import {
-    Col,
-    Card,
-    CardBody,
-    Fa,
-}
-    from 'mdbreact';
-
+import {Col,Card,CardBody,Fa,} from 'mdbreact'
 import { Redirect } from 'react-router'
 import './estilo.css'
 class DocsPage extends Component {
-    // dowloadDocumento = () => {
-    //     fetch('http://ec2-52-43-55-173.us-west-2.compute.amazonaws.com:8080/v2/documentos')
-    //         .then(response => {
-    //             const filename = response.headers.get('Content-Disposition');
-    //             response.blob().then(blob => {
-    //                 let url = window.URL.createObjectURL(blob);
-    //                 let a = document.createElement('a');
-    //                 a.href = url;
-    //                 a.download = filename;
-    //                 a.click();
-    //             });
-    //         });
-    // }
     constructor() {
         super();
         this.state = {
@@ -32,24 +12,15 @@ class DocsPage extends Component {
         this.onClick = this.onClick.bind(this);
     }
     onClick(e) {
-        //TODO
         this.setState({ isRedirected: true });
     }
     render() {
         /**TAMBIEN SE PUEDE USAT 'descripcion---archivo' */
-        const { id, titulo, fechaCreacion } = this.props;
+        const { id, titulo, fechaCreacion,archivo } = this.props;
         if (this.state.isRedirected) {
             return (<Redirect to={"detail/" + id} />);
         }
         return (
-            /**
-             * ---------------------------------------------------------
-             * 
-             * EL CARD SOLO CONTENDRA EL NOMBRE ICONO DETALLE Y FECHA
-             * 
-             * 
-             * --------------------------------------------------------
-             */
             <div style={{maxHeight:'300px'}}>
             <Col lg="6" md="12" className="mb-lg-0 mb-4">
                 <div style={{minWidth:'20rem', minHeight:'30rem'}}>
@@ -72,14 +43,14 @@ class DocsPage extends Component {
                                 size="2x"
                                 onClick={this.onClick}
                             />
-                            {/* <p className="grey-text">{descripcion}</p>
-                            <Button
-                                className="my-3"
-                                onClick={this.dowloadDocumento}>
+                            <a href={'https://integrador-roy360erick.c9users.io/uploads/'+archivo} >
                                 <Fa
+                                    className="my-3"
                                     icon="cloud-download"
-                                    size="2x" />
-                            </Button> */}
+                                    fixed
+                                    size="2x"
+                                />
+                            </a>
                         </CardBody>
                         <hr className="bg-info"/>
                         <p>{fechaCreacion}</p>
@@ -90,8 +61,6 @@ class DocsPage extends Component {
         )
     }
 }
-
-///VARIABLE DEL API REST EN ESTE CASO IRAN LOS 
 DocsPage.propTypes = {
     id: PropTypes.number.isRequired,
     titulo: PropTypes.string.isRequired,

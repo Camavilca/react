@@ -18,6 +18,8 @@ LOGIN CON EL API REST
 import { getCurrentUser } from '../util/APIUtils';
 import { ACCESS_TOKEN } from '../constants';
 import Login from '../user/login/Login';
+import inicio_sesion from '../user/login/iniciar_sesion'
+import registro_usuario from '../user/login/registro_usuario'
 import Signup from '../user/signup/Signup';
 import LoadingIndicator from '../actions/LoadingIndicator';
 import { Layout, notification } from 'antd';
@@ -102,6 +104,8 @@ class App extends Component {
                 {/* fin del nav */}
                 <Route path="/detail/:docuId" component={DocumentoDetail} />
                 <Route path="/subirDocs" component={FormData} />
+                <Route path="/orlando" component={inicio_sesion} />
+                <Route path="/camavilca" component={registro_usuario} />
                 {/* <Route exact path="/login" component={ Login }/> */}
                 <Route path="/login" render={(props) => <Login onLogin={this.handleLogin} {...props} />} />
                 <Route path="/signup" component={Signup} />

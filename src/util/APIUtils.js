@@ -22,36 +22,9 @@ const request = (options) => {
         })
     );
 };
-
-// export function getAllPolls(page, size) {
-//     page = page || 0;
-//     size = size || POLL_LIST_SIZE;
-
-//     return request({
-//         url: API_BASE_URL + "/polls?page=" + page + "&size=" + size,
-//         method: 'GET'
-//     });
-// }
-
-// export function createPoll(pollData) {
-//     return request({
-//         url: API_BASE_URL + "/polls",
-//         method: 'POST',
-//         body: JSON.stringify(pollData)         
-//     });
-// }
-
-// export function castVote(voteData) {
-//     return request({
-//         url: API_BASE_URL + "/polls/" + voteData.pollId + "/votes",
-//         method: 'POST',
-//         body: JSON.stringify(voteData)
-//     });
-// }
-
 export function login(loginRequest) {
     return request({
-        url: API_BASE_URL + "/auth/signin",
+        url: API_BASE_URL + "/api/login",
         method: 'POST',
         body: JSON.stringify(loginRequest)
     });
@@ -59,7 +32,7 @@ export function login(loginRequest) {
 
 export function signup(signupRequest) {
     return request({
-        url: API_BASE_URL + "/auth/signup",
+        url: API_BASE_URL + "/api/registro",
         method: 'POST',
         body: JSON.stringify(signupRequest)
     });

@@ -5,13 +5,14 @@ class uploadMyFile extends Component {
     constructor() {
         super();
         this.state = {
-            valor: ''
+            valor: '',
+            datos:[]
         };
         this.input = this.input.bind(this);
         this.buscar = this.buscar.bind(this);
     }
     buscar(e) {
-        let datos = [] ;
+        // let datos = [] ;
         e.preventDefault();
         let valor = this.state.valor
         axios.get(urlbuscar + `${valor}`)
@@ -33,7 +34,7 @@ class uploadMyFile extends Component {
     }
 
     render() {
-        
+
         return (
             <form onSubmit={this.buscar}>
                 <input
