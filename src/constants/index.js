@@ -1,5 +1,5 @@
 // export const API_BASE_URL = 'http://localhost:5000/api';
-export const API_BASE_URL = 'https://integrador-roy360erick.c9users.io/';
+export const API_BASE_URL = 'https://integrador-roy360erick.c9users.io';
 
 //export const API_BASE_URL = '/api';
 export const ACCESS_TOKEN = 'accessToken';

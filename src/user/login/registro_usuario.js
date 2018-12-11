@@ -8,26 +8,32 @@ class Login extends Component {
             nombre: '',
             apellidos: '',
             correo: '',
-            carrera: '',
-            contraseña: ''
+            contraseña: '',
+            carrera: ''
         }
         this.input = this.input.bind(this)
         this.registro = this.registro.bind(this)
     }
     registro(e) {
         e.preventDefault();
-        const nombre = this.state.nombre
-        const apellidos = this.state.apellidos
-        const correo = this.state.correo
-        const carrera = this.state.carrera
-        const contraseña = this.state.contraseña
-        const data = {
-            nombre,
-            apellidos,
-            correo,
-            carrera,
-            contraseña
-        }
+        let nombre = this.state.nombre
+        let apellidos = this.state.apellidos
+        let correo = this.state.correo
+        let carrera = this.state.carrera
+        let contraseña = this.state.contraseña
+        let data = new FormData()
+        data.append('nombre', nombre)
+        data.append('apellidos', apellidos)
+        data.append('correo', correo)
+        data.append('contraseña', contraseña)
+        data.append('carrera', carrera)
+        // let data = {
+        //     nombre,
+        //     apellidos,
+        //     correo,
+        //     carrera, 
+        //     contraseña
+        // }
         axios.post(signup, data)
             .then(res => {
                 console.log(res);

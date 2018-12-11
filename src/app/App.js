@@ -10,6 +10,7 @@ import PropTypes from 'prop-types'
 import DocumentoDetail from '../views/DocsDetail'
 import FormData from '../views/FormularioData'
 import Inicio from '../views/Inicio'
+import Buscar from '../buscar/BUSCAR'
 /**
 -----------------------------
 LOGIN CON EL API REST 
@@ -104,6 +105,7 @@ class App extends Component {
                 {/* fin del nav */}
                 <Route path="/detail/:docuId" component={DocumentoDetail} />
                 <Route path="/subirDocs" component={FormData} />
+                <Route path="/buscar" component={Buscar} />
                 <Route path="/orlando" component={inicio_sesion} />
                 <Route path="/camavilca" component={registro_usuario} />
                 {/* <Route exact path="/login" component={ Login }/> */}

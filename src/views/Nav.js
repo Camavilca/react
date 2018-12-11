@@ -62,7 +62,11 @@ class Nav extends Component {
                             <span className="tooltip">Subir archivo</span>
                         </li>
                         <li>
-                            <i className="fa fa-search"></i>
+                            <a href="/buscar">
+                                    <Fa
+                                        icon="search"
+                                    />
+                                </a>
                             <span className="tooltip">Buscar</span>
                         </li>
                         <li>

@@ -1,33 +1,39 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import axios from 'axios'
-import {login} from '../../actions/constante'
-class Login extends Component{
+import { login } from '../../actions/constante'
+class Login extends Component {
     constructor() {
         super();
         this.state = {
             username: '',
-            password:''
+            password: ''
         };
         this.input = this.input.bind(this)
         this.sesion = this.sesion.bind(this)
     }
-    // {
-    //     "username":"admin",
-    //       "password":"12345"
-    // }
+    
     sesion(e) {
         e.preventDefault();
-        const username = this.state.username
-        const password = this.state.password
-        const data = {
-            username,
-            password
+        let username = this.state.username
+        let password = this.state.password
+        let headers= {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Accept': 'application/json'
         }
-        axios.get(login, data)
-            .then(res=>{
+        let data = new FormData();
+        data.append('username', username);
+        data.append('password', password);
+        // // data.append('headers',headers)
+        // let data = {
+        //     'username':username,
+        //     'password':password
+        // }
+        
+        axios.post(login,data)
+            .then(res => {
                 console.log(res);
             })
-            .catch(err=>{
+            .catch(err => {
                 console.log(err);
             })
     }
@@ -39,18 +45,18 @@ class Login extends Component{
         });
         console.log(this.state);
     }
-    render(){
-        return(
+    render() {
+        return (
             <div>
                 <form onSubmit={this.sesion}>
-                    <input 
+                    <input
                         name="username"
                         value={this.state.username}
                         placeholder="Ingrese usuario"
                         onChange={this.input}
                     />
-                    
-                    <input 
+
+                    <input
                         name="password"
                         value={this.state.password}
                         placeholder="Ingrese constraseña"

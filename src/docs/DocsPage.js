@@ -43,7 +43,7 @@ class DocsPage extends Component {
                                 size="2x"
                                 onClick={this.onClick}
                             />
-                            <a href={'https://integrador-roy360erick.c9users.io/uploads/'+archivo} >
+                            <a href={'https://integrador-camavilca.c9users.io/uploads/'+archivo} >
                                 <Fa
                                     className="my-3"
                                     icon="cloud-download"

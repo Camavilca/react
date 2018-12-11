@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { upload } from '../actions/constante'
 import axios from 'axios';
+import './UPLOAD.css'
 import {
     Container,
     Fa,
     Button,
+    MDBInput
 } from 'mdbreact'
+
 class uploadMyFile extends Component {
     constructor() {
         super();
@@ -22,9 +25,21 @@ class uploadMyFile extends Component {
     }
     //**UPLOAD FILE */
     fileSelectedHandler(event) {
-        this.setState({
-            archivo: event.target.files[0]
-        })
+        var archivo = event.target.files[0]
+        var nombre = event.target.files[0].name
+        var extencion = (/[.]/.exec(nombre)) ? /[^.]+$/.exec(nombre)[0] : undefined
+        // var permitidos = /(\.doc|\.docx)$/i;
+        console.log(nombre)
+        console.log(extencion)
+        if(extencion == 'doc' || extencion == 'docx'){
+            this.setState({
+                archivo: event.target.files[0]
+            })
+        }else{
+            alert('Ingrese archivo no valido porfavor')
+            archivo.value = ''
+            return false
+        }
     }
     handleSubmit(e) {
         e.preventDefault();
@@ -74,9 +89,9 @@ class uploadMyFile extends Component {
     }
     render() {
         return (
-            <Container>
+            <div>
                 <div className="card mx-xl-5 ">
-                    <div className="card-body ">
+                    <div className="card-body " style={{ marginTop: '30px' }}>
                         <form onSubmit={this.handleSubmit}>
                             <p className="h4 text-center py-4 text-uppercase text-secondary">
                                 subir archivos
@@ -84,22 +99,36 @@ class uploadMyFile extends Component {
                             <label
                                 htmlFor="defaultFormCardNameEx"
                                 className="grey-text font-weight-light">
-                                Titulo
+                                Titulo * 
                         </label>
-                            <input
+                            {/* <input
                                 type="text"
                                 name="titulo"
                                 className="form-control"
+                                placeholder="Ingrese el titulo del archivo"
                                 value={this.state.titulo}
                                 onChange={this.handleInputChange}
-                                placeholder="Ingrese el titulo del archivo"
                                 required
+                            /> */}
+                            <MDBInput
+                                label="Ingrese el titulo del arhivo"
+                                icon="file-pdf-o"
+                                group
+                                type="text"
+                                validate
+                                name="titulo"
+                                error="wrong"
+                                value={this.state.titulo}
+                                onChange={this.handleInputChange}
+                                required
+                                success="right"
                             />
                             <br />
                             <label
                                 className="grey-text font-weight-light text-left">
-                                Descripción</label>
-                            <input
+                                Descripción *
+                            </label>
+                            {/* <input
                                 type="text"
                                 name="descripcion"
                                 className="form-control"
@@ -107,11 +136,28 @@ class uploadMyFile extends Component {
                                 onChange={this.handleInputChange}
                                 placeholder="Descripcion"
                                 required
+                            /> */}
+                            <MDBInput
+                                label="Ingrese la descripcion del arhivo"
+                                icon="newspaper-o"
+                                group
+                                type="text"
+                                validate
+                                name="descripcion"
+                                error="wrong"
+                                value={this.state.descripcion}
+                                onChange={this.handleInputChange}
+                                required
+                                success="right"
                             />
+                            <label
+                                className="grey-text font-weight-light text-left mx-5">
+                                Elija archivo *
+                            </label>
                             <input
                                 style={{ display: 'none' }}
                                 type="file"
-                                className="form-control"
+                                className="form-control ml-5"
                                 onChange={(e) => this.fileSelectedHandler(e)}
                                 required
                                 ref={fileInput => this.fileInput = fileInput}
@@ -119,8 +165,9 @@ class uploadMyFile extends Component {
                             <Button
                                 onClick={() => this.fileInput.click()}
                                 outline
-                                className="my-5"
-
+                                required
+                                className="center m-5"
+                                color="danger"
                             >
                                 <Fa
                                     icon="cloud-upload"
@@ -132,17 +179,17 @@ class uploadMyFile extends Component {
                             <br />
                             <Button
                                 type="submit"
-                                className="my-5 align-text-bottom"
+                                className="m-5 align-text-bottom"
                                 outline
                                 color="primary">
-                                Guardar <Fa icon="paper-plane-o">
-                                </Fa>
+                                Guardar 
+                                <Fa icon="paper-plane-o"></Fa>
                             </Button>
                         </form>
                         {this.mensageShow()}
                     </div>
                 </div>
-            </Container>
+            </div>
         )
     }
 }

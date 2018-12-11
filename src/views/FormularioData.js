@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // import FormularioDocs from '../components/subir_docs/FormularioDocs'
-import FormularioDocs from '../subir_docs/upload'
+import FormularioDocs from '../subir_docs/UPLOAD'
 import Nav from '../views/Nav'
 
 class FormData extends Component{
@@ -9,7 +9,6 @@ class FormData extends Component{
         return(
             <div>
                 <Nav/>
-                <h2>Formulario para la subida de archivos</h2>
                 <div style={{marginLeft:'15rem'}}>
                 <FormularioDocs/>
                 </div>
